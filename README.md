@@ -13,7 +13,7 @@ Ini adalah Laporan untuk Praktikum Pemrograman Web (Praktikum 7) yang berfokus p
 
 Langkah pertama adalah memastikan XAMPP Control Panel berjalan, khususnya modul **Apache Web Server**. Ini diperlukan agar skrip PHP dapat dieksekusi di sisi server (server-side).
 
-**[Screenshot XAMPP Control Panel Anda yang menunjukkan Apache berjalan]**
+**<img src="Lab7Web/images/xampp.png" width="700">**
 
 ## 2. Latihan Dasar-Dasar PHP
 
@@ -22,17 +22,19 @@ Bagian ini mencakup semua latihan yang ada di modul, yang dikerjakan dalam satu 
 ### A. Hello World & Variabel
 Latihan awal untuk mencetak "Hello World" menggunakan `echo` dan menampilkan isi variabel (seperti `$nim` dan `$nama`).
 
-**[Screenshot hasil latihan Variabel Anda]**
+**<img src="Lab7Web/images/variable.png" width="700">**
 
 ### B. Form Input (Metode POST)
 Latihan membuat form HTML sederhana dengan `method="post"` dan menangkap data yang dikirim menggunakan *predefine variable* `$_POST` di PHP.
 
-**[Screenshot hasil latihan Form Input (sebelum dan sesudah submit)]**
+**<img src="Lab7Web/images/form_input.png" width="700">**
+
+**<img src="Lab7Web/images/form_input2.png" width="700">**
 
 ### C. Operator, Kondisi IF & Switch
 Latihan menggunakan operator aritmatika untuk menghitung gaji dan struktur kondisi `if-elseif-else` serta `switch-case` untuk menampilkan nama hari.
 
-**[Screenshot hasil latihan Operator, IF, dan Switch Anda]**
+**<img src="Lab7Web/images/operator,if,switch.png" width="700">**
 
 ### D. Perulangan (For, While, Do-While)
 Latihan terakhir adalah mengimplementasikan tiga jenis perulangan:
@@ -40,7 +42,7 @@ Latihan terakhir adalah mengimplementasikan tiga jenis perulangan:
 * `while`
 * `do-while`
 
-**[Screenshot hasil latihan Perulangan Anda]**
+**<img src="Lab7Web/images/for,while,dowhile.png" width="700">**
 
 ---
 
@@ -61,13 +63,13 @@ Setelah form disubmit, skrip PHP akan memproses data tersebut untuk:
 
 Ini adalah tampilan awal program saat dimuat di browser.
 
-**[Screenshot Form Input Tugas Akhir Anda (sebelum diisi)]**
+**<img src="Lab7Web/images/Tugas.png" width="700">**
 
 ### Hasil Output Program
 
 Ini adalah hasil setelah form diisi dan tombol "Kirim" ditekan. Program berhasil menampilkan nama, tanggal lahir, umur (hasil kalkulasi), pekerjaan, dan gaji (sesuai `switch-case`).
 
-**[Screenshot Hasil Output Tugas Akhir Anda (setelah diisi)]**
+**<img src="Lab7Web/images/Tugas2.png" width="700">**
 
 ### Kode Program (php_dasar.php)
 
@@ -195,3 +197,89 @@ Berikut adalah kode lengkap yang digunakan untuk tugas akhir ini.
 
 </body>
 </html>
+```
+
+## 3. Penjelasan Tugas Praktikum
+
+Berikut adalah penjelasan rinci tentang bagaimana saya membangun program untuk tugas akhir praktikum ini.
+
+Program ini adalah satu file PHP yang menggabungkan HTML untuk struktur, CSS untuk styling, dan logika PHP untuk memproses data.
+
+### 1. Bagian HTML (Form Input)
+
+Pertama, saya membuat struktur form menggunakan tag HTML:
+
+* Saya menggunakan tag `<form method="post" action="">`. Metode `post` saya pilih agar data yang dikirim tidak terlihat di URL browser, dan `action=""` berarti data form akan dikirim kembali ke file ini sendiri untuk diproses.
+* Saya membuat tiga input utama yang diminta oleh tugas:
+    * Satu input teks untuk `name="nama"`.
+    * Satu input tanggal khusus `type="date"` untuk `name="tgl_lahir"`.
+    * Satu *dropdown* `<select>` untuk `name="pekerjaan"`.
+* Terakhir, saya menambahkan tombol submit `<input type="submit" name="submit">`. Atribut `name="submit"` ini sangat penting karena saya menggunakannya sebagai pemicu di dalam logika PHP.
+
+### 2. Bagian PHP (Logika Pemrosesan)
+
+Ini adalah inti dari program saya, di mana semua pemrosesan data terjadi. Blok kode PHP ini saya letakkan di bawah form HTML.
+
+#### A. Pengecekan Tombol Submit
+
+Saya membungkus semua logika pemrosesan di dalam sebuah blok `if`:
+
+```php
+if (isset($_POST['submit'])) {
+    // Semua kode pemrosesan ada di sini
+}
+```
+
+Fungsi isset() memeriksa apakah tombol submit sudah ditekan.
+
+#### B. Pengambilan Data Form
+
+Setelah form disubmit, langkah pertama di dalam if adalah mengambil data dari form menggunakan global variable $_POST dan menyimpannya ke variabel PHP:
+
+```PHP
+$nama = $_POST['nama'];
+$tgl_lahir = $_POST['tgl_lahir'];
+$pekerjaan = $_POST['pekerjaan'];
+```
+#### C. Menghitung Umur
+
+Ini adalah bagian logika yang paling kompleks. Untuk menghitung umur dari tanggal lahir:
+
+Saya mengubah input tanggal lahir (yang berupa string) menjadi objek `DateTime` yang bisa dihitung oleh PHP: `$tgl_lahir_obj = new DateTime($tgl_lahir)`;
+
+Saya membuat objek DateTime kedua untuk tanggal hari ini: `$hari_ini = new DateTime('today')`;
+
+Saya menggunakan fungsi `diff()` bawaan PHP untuk mencari selisih antara dua tanggal tersebut: `$umur = $hari_ini->diff($tgl_lahir_obj)`;
+
+Hasil  `diff()` adalah sebuah objek interval. Saya hanya perlu mengambil bagian tahunnya saja, jadi saya mengakses properti `y` (dari year): `$umur_tahun = $umur->y;`. Variabel inilah yang menyimpan umur pengguna.
+
+
+#### D. Menentukan Gaji
+
+Sesuai instruksi, gaji harus berbeda berdasarkan pekerjaan. Saya menggunakan struktur `switch` yang sudah saya pelajari di modul karena ini lebih rapi daripada `if-elseif` yang panjang:
+
+```PHP
+switch ($pekerjaan) {
+    case "Programmer":
+        $gaji = 12000000;
+        break;
+    case "Designer":
+        $gaji = 10000000;
+        break;
+    // ...case lainnya...
+    default:
+        $gaji = 4000000;
+}
+```
+
+#### E. Menampilkan Hasil
+
+Langkah terakhir adalah menampilkan semua hasil kembali ke pengguna. Saya menggunakan echo untuk mencetak HTML:
+
+```PHP
+echo '<div class="result">';
+echo 'Nama: <strong>' . htmlspecialchars($nama) . '</strong><br>';
+echo 'Umur: <strong>' . $umur_tahun . ' tahun</strong><br>';
+echo 'Gaji: <strong>Rp. ' . number_format($gaji, 0, ',', '.') . '</strong>';
+echo '</div>';
+```
