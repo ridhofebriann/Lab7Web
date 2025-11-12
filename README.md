@@ -13,7 +13,7 @@ Ini adalah Laporan untuk Praktikum Pemrograman Web (Praktikum 7) yang berfokus p
 
 Langkah pertama adalah memastikan XAMPP Control Panel berjalan, khususnya modul **Apache Web Server**. Ini diperlukan agar skrip PHP dapat dieksekusi di sisi server (server-side).
 
-**<img src="images/xampp.png" width="700">**
+<img src="lab7Web/images/xampp.png" width="700">
 
 ## 2. Latihan Dasar-Dasar PHP
 
@@ -22,19 +22,19 @@ Bagian ini mencakup semua latihan yang ada di modul, yang dikerjakan dalam satu 
 ### A. Hello World & Variabel
 Latihan awal untuk mencetak "Hello World" menggunakan `echo` dan menampilkan isi variabel (seperti `$nim` dan `$nama`).
 
-**<img src="Lab7Web/images/variable.png" width="700">**
+**<img src="lab7Web/images/variable.png" width="700">**
 
 ### B. Form Input (Metode POST)
 Latihan membuat form HTML sederhana dengan `method="post"` dan menangkap data yang dikirim menggunakan *predefine variable* `$_POST` di PHP.
 
-**<img src="Lab7Web/images/form_input.png" width="700">**
+**<img src="lab7Web/images/form_input.png" width="700">**
 
-**<img src="Lab7Web/images/form_input2.png" width="700">**
+**<img src="lab7Web/images/form_input2.png" width="700">**
 
 ### C. Operator, Kondisi IF & Switch
 Latihan menggunakan operator aritmatika untuk menghitung gaji dan struktur kondisi `if-elseif-else` serta `switch-case` untuk menampilkan nama hari.
 
-**<img src="Lab7Web/images/operator,if,switch.png" width="700">**
+**<img src="lab7Web/images/operator,if,switch.png" width="700">**
 
 ### D. Perulangan (For, While, Do-While)
 Latihan terakhir adalah mengimplementasikan tiga jenis perulangan:
@@ -42,7 +42,7 @@ Latihan terakhir adalah mengimplementasikan tiga jenis perulangan:
 * `while`
 * `do-while`
 
-**<img src="Lab7Web/images/for,while,dowhile.png" width="700">**
+**<img src="lab7Web/images/for,while,dowhile.png" width="700">**
 
 ---
 
@@ -63,13 +63,13 @@ Setelah form disubmit, skrip PHP akan memproses data tersebut untuk:
 
 Ini adalah tampilan awal program saat dimuat di browser.
 
-**<img src="Lab7Web/images/Tugas.png" width="700">**
+**<img src="lab7Web/images/Tugas.png" width="700">**
 
 ### Hasil Output Program
 
 Ini adalah hasil setelah form diisi dan tombol "Kirim" ditekan. Program berhasil menampilkan nama, tanggal lahir, umur (hasil kalkulasi), pekerjaan, dan gaji (sesuai `switch-case`).
 
-**<img src="Lab7Web/images/Tugas2.png" width="700">**
+**<img src="lab7Web/images/Tugas2.png" width="700">**
 
 ### Kode Program (php_dasar.php)
 
