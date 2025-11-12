@@ -13,7 +13,7 @@ Ini adalah Laporan untuk Praktikum Pemrograman Web (Praktikum 7) yang berfokus p
 
 Langkah pertama adalah memastikan XAMPP Control Panel berjalan, khususnya modul **Apache Web Server**. Ini diperlukan agar skrip PHP dapat dieksekusi di sisi server (server-side).
 
-**<img src="Lab7Web/images/xampp.png" width="700">**
+**<img src="images/xampp.png" width="700">**
 
 ## 2. Latihan Dasar-Dasar PHP
 
